@@ -1,20 +1,26 @@
-require 'activesupport/test_case'
+require 'active_support'
+require 'active_support/testing/autorun'
+require 'yaml'
 
-class PersonNameTest < ActiveSupport:TestCase
-  def setup
-    @name = SignalId::PersonName.new('Foo', 'Bar')
-    @first = SignalId::PersonName.new('Baz')
+require 'name_of_person/person_name'
+
+class PersonNameTest < ActiveSupport::TestCase
+  include NameOfPerson
+
+  setup do
+    @name  = PersonName.new('Foo', 'Bar')
+    @first = PersonName.new('Baz')
   end
 
   test "first is required" do
     assert_raise ArgumentError do
-      SignalId::PersonName.new(nil)
+      PersonName.new(nil)
     end
   end
 
   test "last may be omitted" do
     assert_nothing_raised do
-      SignalId::PersonName.new('Foo', nil)
+      PersonName.new('Foo', nil)
     end
   end
 
@@ -47,24 +53,24 @@ class PersonNameTest < ActiveSupport:TestCase
   test "possessive" do
     assert_equal "#{@name.full}'s", @name.possessive
     assert_equal "#{@first.full}'s", @first.possessive
-    assert_equal "Foo Bars'", SignalId::PersonName.new('Foo', 'Bars').possessive
+    assert_equal "Foo Bars'", PersonName.new('Foo', 'Bars').possessive
   end
 
   test "from full name" do
-    name = SignalId::PersonName.full('Will St. Clair')
+    name = PersonName.full('Will St. Clair')
     assert_equal 'Will', name.first
     assert_equal 'St. Clair', name.last
 
-    first = SignalId::PersonName.full('Will')
+    first = PersonName.full('Will')
     assert_equal 'Will', first.first
     assert_nil first.last
 
-    assert_nil SignalId::PersonName.full(nil)
-    assert_nil SignalId::PersonName.full('')
+    assert_nil PersonName.full(nil)
+    assert_nil PersonName.full('')
   end
 
   test "blank last name behaves the same as nil" do
-    name = SignalId::PersonName.new('Baz', '')
+    name = PersonName.new('Baz', '')
     assert_equal @first.full, name.full
     assert_equal @first.familiar, name.familiar
     assert_equal @first.abbreviated, name.abbreviated
@@ -77,7 +83,7 @@ class PersonNameTest < ActiveSupport:TestCase
   end
 
   test "mentionable with three names" do
-    name = SignalId::PersonName.full('Will St. Clair')
+    name = PersonName.full('Will St. Clair')
     assert_equal 'wills', name.mentionable
   end
 
@@ -86,7 +92,7 @@ class PersonNameTest < ActiveSupport:TestCase
   end
 
   test "familiar with three names" do
-    name = SignalId::PersonName.full('Will St. Clair')
+    name = PersonName.full('Will St. Clair')
     assert_equal 'Will S.', name.familiar
   end
 

@@ -1,3 +1,5 @@
+require 'active_support/core_ext/string'
+
 module NameOfPerson
   class PersonName < String
     attr_reader :first, :last
