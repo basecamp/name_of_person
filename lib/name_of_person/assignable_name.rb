@@ -1,3 +1,5 @@
+require 'name_of_person/person_name'
+
 module NameOfPerson
   module AssignableName
     # Assigns first_name and last_name attributes as extracted from a supplied full name.
