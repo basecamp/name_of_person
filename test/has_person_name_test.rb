@@ -1,9 +1,7 @@
 require 'active_support'
 require 'active_support/testing/autorun'
 
-require 'active_model'
-
-require 'name_of_person/has_person_name'
+require 'name_of_person/loaders/active_model_has_person_name'
 
 class ModelPerson
   include ActiveModel::Model

@@ -1,4 +1,3 @@
-require 'active_model/model'
 require 'name_of_person/assignable_name'
 
 module NameOfPerson
@@ -8,10 +7,8 @@ module NameOfPerson
     class_methods do
       # Defines the instance methods name/name= from AssignableName.
       def has_person_name
-        include AssignableName
+        include NameOfPerson::AssignableName
       end
     end
   end
 end
-
-ActiveModel::Model.include NameOfPerson::HasPersonName
