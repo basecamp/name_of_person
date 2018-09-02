@@ -30,7 +30,7 @@ name.first # => "David"
 
 ## Maintenance Expectations
 
-This library is an extraction from Basecamp that's been sufficient in almost unaltered form for over 10 years. While contributions are always welcome, do not expect a lot of feature evolution beyond the basics. Feel free to fork this library if you'd like to add large upgrades like titulations or different accomodations for other languages.
+This library is an extraction from Basecamp that's been sufficient in almost unaltered form for over 10 years. While contributions are always welcome, do not expect a lot of feature evolution beyond the basics. Feel free to fork this library if you'd like to add large upgrades like titulations or different accommodations for other languages.
 
 ## License
 
