@@ -20,7 +20,7 @@ module NameOfPerson
       @full ||= last.present? ? "#{first} #{last}" : first
     end
 
-    # Returns first + last initial, such as "Jason F".
+    # Returns first + last initial, such as "Jason F.".
     def familiar
       @familiar ||= last.present? ? "#{first} #{last.first}." : first
     end
