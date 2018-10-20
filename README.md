@@ -2,6 +2,14 @@
 
 Presenting names for English-language applications where a basic model of first and last name(s) combined is sufficient. This approach is not meant to cover all possible naming cases, deal with other languages, or even titulations. Just the basics.
 
+## Installation
+
+Add this in your `Gemfile`.
+
+```ruby
+gem "name_of_person"
+```
+
 ## Examples
 
 ```ruby
