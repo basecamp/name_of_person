@@ -56,6 +56,12 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_equal "Foo Bars'", PersonName.new('Foo', 'Bars').possessive
   end
 
+  test "full name with spaces at the edges of the string" do
+    name = PersonName.full('  Will St. Clair  ')
+    assert_equal 'Will', name.first
+    assert_equal 'St. Clair', name.last
+  end
+
   test "from full name" do
     name = PersonName.full('Will St. Clair')
     assert_equal 'Will', name.first
