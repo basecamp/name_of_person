@@ -125,6 +125,11 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_equal 'foob', @name.mentionable
   end
 
+  test "mentionable with first name" do
+    name = PersonName.full('Will')
+    assert_equal 'wil', name.mentionable
+  end
+
   test "mentionable with three names" do
     name = PersonName.full('Will St. Clair')
     assert_equal 'wills', name.mentionable
