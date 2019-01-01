@@ -5,7 +5,7 @@ module NameOfPerson
     attr_reader :first, :last
 
     def self.full(full_name)
-      first, last = full_name.to_s.strip.split(/\s+/, 2)
+      first, last = full_name.to_s.squish.split(/\s/, 2)
       new(first, last) if first.present?
     end
 
