@@ -61,14 +61,27 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_equal 'DHH', name.initials
   end
 
-  test "initials (full name with spaces with spaces)" do
-    name = PersonName.full('  David Heinemeier   Hansson  ')
+  test "initials (full name with spaces)" do
+    name = PersonName.full('  David    Heinemeier   Hansson  ')
     assert_equal 'DHH', name.initials
   end
 
   test "initials for just a first name" do
     name = PersonName.full('David')
     assert_equal 'D', name.initials
+  end
+
+  test "from full name" do
+    name = PersonName.full('Will St. Clair')
+    assert_equal 'Will', name.first
+    assert_equal 'St. Clair', name.last
+
+    first = PersonName.full('Will')
+    assert_equal 'Will', first.first
+    assert_nil first.last
+
+    assert_nil PersonName.full(nil)
+    assert_nil PersonName.full('')
   end
 
   test "full name with spaces at the edges of the string" do
@@ -97,19 +110,6 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_equal 'Will', name.first
     assert_equal 'St. Clair', name.last
     assert_equal 'Will St. Clair', name.full
-  end
-
-  test "from full name" do
-    name = PersonName.full('Will St. Clair')
-    assert_equal 'Will', name.first
-    assert_equal 'St. Clair', name.last
-
-    first = PersonName.full('Will')
-    assert_equal 'Will', first.first
-    assert_nil first.last
-
-    assert_nil PersonName.full(nil)
-    assert_nil PersonName.full('')
   end
 
   test "blank last name behaves the same as nil" do
