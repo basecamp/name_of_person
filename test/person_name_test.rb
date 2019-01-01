@@ -61,6 +61,16 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_equal 'DHH', name.initials
   end
 
+  test "initials (full name with spaces with spaces)" do
+    name = PersonName.full('  David Heinemeier   Hansson  ')
+    assert_equal 'DHH', name.initials
+  end
+
+  test "initials for just a first name" do
+    name = PersonName.full('David')
+    assert_equal 'D', name.initials
+  end
+
   test "full name with spaces at the edges of the string" do
     name = PersonName.full('  Will St. Clair ')
     assert_equal 'Will', name.first
