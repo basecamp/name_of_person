@@ -57,9 +57,31 @@ class PersonNameTest < ActiveSupport::TestCase
   end
 
   test "full name with spaces at the edges of the string" do
-    name = PersonName.full('  Will St. Clair  ')
+    name = PersonName.full('  Will St. Clair ')
     assert_equal 'Will', name.first
     assert_equal 'St. Clair', name.last
+    assert_equal 'Will St. Clair', name.full
+  end
+
+  test "full name with spaces between first and last name" do
+    name = PersonName.full('Will   St. Clair')
+    assert_equal 'Will', name.first
+    assert_equal 'St. Clair', name.last
+    assert_equal 'Will St. Clair', name.full
+  end
+
+  test "full name with spaces between multiple last name words" do
+    name = PersonName.full('Will St.   Clair')
+    assert_equal 'Will', name.first
+    assert_equal 'St. Clair', name.last
+    assert_equal 'Will St. Clair', name.full
+  end
+
+  test "full name with spaces everywhere" do
+    name = PersonName.full('  Will     St.   Clair       ')
+    assert_equal 'Will', name.first
+    assert_equal 'St. Clair', name.last
+    assert_equal 'Will St. Clair', name.full
   end
 
   test "from full name" do
