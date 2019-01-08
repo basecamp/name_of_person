@@ -56,6 +56,21 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_equal "Foo Bars'", PersonName.new('Foo', 'Bars').possessive
   end
 
+  test "initials" do
+    name = PersonName.full('David Heinemeier Hansson')
+    assert_equal 'DHH', name.initials
+  end
+
+  test "initials (full name with spaces)" do
+    name = PersonName.full('  David    Heinemeier   Hansson  ')
+    assert_equal 'DHH', name.initials
+  end
+
+  test "initials for just a first name" do
+    name = PersonName.full('David')
+    assert_equal 'D', name.initials
+  end
+
   test "from full name" do
     name = PersonName.full('Will St. Clair')
     assert_equal 'Will', name.first
@@ -69,6 +84,34 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_nil PersonName.full('')
   end
 
+  test "full name with spaces at the edges of the string" do
+    name = PersonName.full('  Will St. Clair ')
+    assert_equal 'Will', name.first
+    assert_equal 'St. Clair', name.last
+    assert_equal 'Will St. Clair', name.full
+  end
+
+  test "full name with spaces between first and last name" do
+    name = PersonName.full('Will   St. Clair')
+    assert_equal 'Will', name.first
+    assert_equal 'St. Clair', name.last
+    assert_equal 'Will St. Clair', name.full
+  end
+
+  test "full name with spaces between multiple last name words" do
+    name = PersonName.full('Will St.   Clair')
+    assert_equal 'Will', name.first
+    assert_equal 'St. Clair', name.last
+    assert_equal 'Will St. Clair', name.full
+  end
+
+  test "full name with spaces everywhere" do
+    name = PersonName.full('  Will     St.   Clair       ')
+    assert_equal 'Will', name.first
+    assert_equal 'St. Clair', name.last
+    assert_equal 'Will St. Clair', name.full
+  end
+
   test "blank last name behaves the same as nil" do
     name = PersonName.new('Baz', '')
     assert_equal @first.full, name.full
@@ -80,6 +123,11 @@ class PersonNameTest < ActiveSupport::TestCase
 
   test "mentionable" do
     assert_equal 'foob', @name.mentionable
+  end
+
+  test "mentionable with first name" do
+    name = PersonName.full('Will')
+    assert_equal 'wil', name.mentionable
   end
 
   test "mentionable with three names" do

@@ -5,7 +5,7 @@ module NameOfPerson
     attr_reader :first, :last
 
     def self.full(full_name)
-      first, last = full_name.to_s.strip.split(/\s+/, 2)
+      first, last = full_name.to_s.squish.split(/\s/, 2)
       new(first, last) if first.present?
     end
 
@@ -42,7 +42,7 @@ module NameOfPerson
 
     # Returns just the initials.
     def initials
-      @initials ||= scan(/\b(\S)\S*/).join
+      @initials ||= scan(/(\S)\S+/).join
     end
 
     # Returns a mentionable version of the familiar name

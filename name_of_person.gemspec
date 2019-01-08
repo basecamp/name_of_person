@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = 'name_of_person'
-  s.version  = '1.0.0'
+  s.version  = '1.1.0'
   s.authors  = 'David Heinemeier Hansson'
   s.email    = 'david@basecamp.com'
   s.summary  = 'Presenting names of people in full, familiar, abbreviated, and initialized forms (but without titulation etc)'
