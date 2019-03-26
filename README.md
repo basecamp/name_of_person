@@ -28,6 +28,21 @@ name = NameOfPerson::PersonName.full("David Heinemeier Hansson")
 name.first # => "David"
 ```
 
+## Installation
+
+```ruby
+# Gemfile
+gem 'name_of_person'
+```
+
+If you are using this outside of Rails, make sure `ActiveRecord` and/or `ActiveModel` are manually required.
+
+```ruby
+require 'active_record'
+# and/or
+require 'active_model'
+```
+
 ## Maintenance Expectations
 
 This library is an extraction from Basecamp that's been sufficient in almost unaltered form for over 10 years. While contributions are always welcome, do not expect a lot of feature evolution beyond the basics. Feel free to fork this library if you'd like to add large upgrades like titulations or different accommodations for other languages.
