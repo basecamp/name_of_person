@@ -71,6 +71,21 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_equal 'D', name.initials
   end
 
+  test "initials skip anything inside parenthesis" do
+    name = PersonName.full('Conor Muirhead (Basecamp)')
+    assert_equal 'CM', name.initials
+  end
+
+  test "initials skip anything inside brackets" do
+    name = PersonName.full('Conor Muirhead [Basecamp]')
+    assert_equal 'CM', name.initials
+  end
+
+  test "initials skip non-word characters" do
+    name = PersonName.full('Conor Muirhead !')
+    assert_equal 'CM', name.initials
+  end
+
   test "from full name" do
     name = PersonName.full('Will St. Clair')
     assert_equal 'Will', name.first
