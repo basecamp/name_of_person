@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    name_of_person (0.1.0)
+    name_of_person (1.1.1)
       activesupport (>= 5.2.0)
 
 GEM
@@ -35,4 +35,4 @@ DEPENDENCIES
   rake
 
 BUNDLED WITH
-   1.16.3
+   1.17.2
