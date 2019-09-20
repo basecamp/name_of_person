@@ -42,7 +42,7 @@ module NameOfPerson
 
     # Returns just the initials.
     def initials
-      @initials ||= remove(/(\(|\[).*(\)|\])/).scan(/([[:word:]])[[:word:]]+/i).join
+      @initials ||= remove(/(\(|\[).*(\)|\])/).scan(/([[:word:]])[[:word:]]*/i).join
     end
 
     # Returns a mentionable version of the familiar name
