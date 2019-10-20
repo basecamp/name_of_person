@@ -52,8 +52,13 @@ class PersonNameTest < ActiveSupport::TestCase
 
   test "possessive" do
     assert_equal "#{@name.full}'s", @name.possessive
+    assert_equal "#{@name.last}'s", @name.possessive(first_name: false)
+    assert_equal "#{@name.first}'s", @name.possessive(last_name: false)
     assert_equal "#{@first.full}'s", @first.possessive
+
     assert_equal "Foo Bars'", PersonName.new('Foo', 'Bars').possessive
+    assert_equal "Bars'", PersonName.new('Foo', 'Bars').possessive(first_name: false)
+    assert_equal "Foo's", PersonName.new('Foo', 'Bars').possessive(last_name: false)
   end
 
   test "initials" do

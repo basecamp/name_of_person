@@ -36,8 +36,13 @@ module NameOfPerson
     end
 
     # Returns full name with with trailing 's or ' if name ends in s.
-    def possessive
-      @possessive ||= "#{self}'#{"s" unless end_with?("s")}"
+    def possessive(first_name: true, last_name: true)
+      base = []
+      base << first if first_name && first.present?
+      base << last if last_name && last.present?
+      base = base.join(' ')
+
+      "#{base}'#{"s" unless base.end_with?("s")}"
     end
 
     # Returns just the initials.
