@@ -13,15 +13,17 @@ end
 # Saves a new record using { first_name: "David", last_name: "Heinemeier Hansson" }
 person = Person.create! name: "David Heinemeier Hansson"
 
-person.name.full        # => "David Heinemeier Hansson"
-person.name.first       # => "David"
-person.name.last        # => "Heinemeier Hansson"
-person.name.initials    # => "DHH"
-person.name.familiar    # => "David H."
-person.name.abbreviated # => "D. Heinemeier Hansson"
-person.name.sorted      # => "Heinemeier Hansson, David"
-person.name.mentionable # => "davidh"
-person.name.possessive  # => "David Heinemeier Hansson's"
+person.name.full                           # => "David Heinemeier Hansson"
+person.name.first                          # => "David"
+person.name.last                           # => "Heinemeier Hansson"
+person.name.initials                       # => "DHH"
+person.name.familiar                       # => "David H."
+person.name.abbreviated                    # => "D. Heinemeier Hansson"
+person.name.sorted                         # => "Heinemeier Hansson, David"
+person.name.mentionable                    # => "davidh"
+person.name.possessive                     # => "David Heinemeier Hansson's"
+person.name.possessive(first_name: false)  # => "Heinemeier Hansson's"
+person.name.possessive(last_name: false)   # => "David's"
 
 # Use directly
 name = NameOfPerson::PersonName.full("David Heinemeier Hansson")
