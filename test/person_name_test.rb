@@ -52,13 +52,23 @@ class PersonNameTest < ActiveSupport::TestCase
 
   test "possessive" do
     assert_equal "#{@name.full}'s", @name.possessive
-    assert_equal "#{@name.last}'s", @name.possessive(first_name: false)
-    assert_equal "#{@name.first}'s", @name.possessive(last_name: false)
+    assert_equal "#{@name.full}'s", @name.possessive(:full)
+    assert_equal "#{@name.first}'s", @name.possessive(:first)
+    assert_equal "#{@name.last}'s", @name.possessive(:last)
+
     assert_equal "#{@first.full}'s", @first.possessive
+    assert_equal "#{@first.full}'s", @first.possessive(:full)
+    assert_equal "#{@first.full}'s", @first.possessive(:first)
+    assert_nil @first.possessive(:last)
 
     assert_equal "Foo Bars'", PersonName.new('Foo', 'Bars').possessive
-    assert_equal "Bars'", PersonName.new('Foo', 'Bars').possessive(first_name: false)
-    assert_equal "Foo's", PersonName.new('Foo', 'Bars').possessive(last_name: false)
+    assert_equal "Foo Bars'", PersonName.new('Foo', 'Bars').possessive(:full)
+    assert_equal "Foo's", PersonName.new('Foo', 'Bars').possessive(:first)
+    assert_equal "Bars'", PersonName.new('Foo', 'Bars').possessive(:last)
+
+    assert_raise ArgumentError do
+      @name.possessive(:whoops)
+    end
   end
 
   test "initials" do

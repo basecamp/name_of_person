@@ -35,14 +35,21 @@ module NameOfPerson
       @sorted ||= last.present? ? "#{last}, #{first}" : first
     end
 
-    # Returns full name with with trailing 's or ' if name ends in s.
-    def possessive(first_name: true, last_name: true)
-      base = []
-      base << first if first_name && first.present?
-      base << last if last_name && last.present?
-      base = base.join(' ')
+    # Returns name with with trailing 's or ' if name ends in s.
+    # Pass in :full, :first, or :last as a parameter to use the full,
+    # first, or last name (defaults to :full).
+    def possessive(base=:full)
+      unless [:full, :first, :last].include?(base)
+        raise ArgumentError, "Base parameter must be :full, :first, or :last"
+      end
 
-      "#{base}'#{"s" unless base.end_with?("s")}"
+      @possessive ||= Hash.new
+      @possessive[base] ||= begin
+        base_name = send(base)
+        return if base_name.blank?
+
+        "#{base_name}'#{'s' unless base_name.end_with?('s')}"
+      end
     end
 
     # Returns just the initials.
