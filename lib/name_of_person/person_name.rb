@@ -38,7 +38,7 @@ module NameOfPerson
     # Returns name with with trailing 's or ' if name ends in s.
     # Pass in :full, :first, or :last as a parameter to use the full,
     # first, or last name (defaults to :full).
-    def possessive(base=:full)
+    def possessive(base = :full)
       unless [:full, :first, :last].include?(base)
         raise ArgumentError, "Base parameter must be :full, :first, or :last"
       end
