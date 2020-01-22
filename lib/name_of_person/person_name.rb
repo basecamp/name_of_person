@@ -36,8 +36,16 @@ module NameOfPerson
     end
 
     # Returns full name with with trailing 's or ' if name ends in s.
-    def possessive
-      @possessive ||= "#{self}'#{"s" unless end_with?("s")}"
+    def possessive(method = :full)
+      whitelist = %i[full first last abbreviated sorted initials]
+
+      unless whitelist.include?(method.to_sym)
+        raise ArgumentError, 'Please provide a valid method'
+      end
+
+      name = public_send(method)
+
+      @possessive ||= "#{name}'#{'s' unless name.downcase.end_with?('s')}"
     end
 
     # Returns just the initials.

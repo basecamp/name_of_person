@@ -22,6 +22,12 @@ person.name.abbreviated # => "D. Heinemeier Hansson"
 person.name.sorted      # => "Heinemeier Hansson, David"
 person.name.mentionable # => "davidh"
 person.name.possessive  # => "David Heinemeier Hansson's"
+person.name.possessive(:first)  # => "David's"
+person.name.possessive(:last)  # => "Hansson's"
+person.name.possessive(:initials)  # => "DHH's"
+person.name.possessive(:sorted)  # => "Heinemeier Hansson, David's"
+person.name.possessive(:abbreviated)  # => "D. Heinemeier Hansson's"
+
 
 # Use directly
 name = NameOfPerson::PersonName.full("David Heinemeier Hansson")
