@@ -56,6 +56,32 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_equal "Foo Bars'", PersonName.new('Foo', 'Bars').possessive
   end
 
+  test "possessive first" do
+    assert_equal "#{@name.first}'s", @name.possessive(:first)
+  end
+
+  test "possessive last" do
+    assert_equal "#{@name.last}'s", @name.possessive(:last)
+  end
+
+  test "possessive sorted" do
+    assert_equal "#{@name.sorted}'s", @name.possessive(:sorted)
+  end
+
+  test "possessive initials" do
+    assert_equal "#{@name.initials}'s", @name.possessive(:initials)
+  end
+  
+  test "possessive abbreviated" do
+    assert_equal "#{@name.abbreviated}'s", @name.possessive(:abbreviated)
+  end
+
+  test "possessive with invalid arguments" do
+    assert_raise ArgumentError do
+      @name.possessive(:not_allowed)
+    end
+  end
+
   test "initials" do
     name = PersonName.full('David Heinemeier Hansson')
     assert_equal 'DHH', name.initials
