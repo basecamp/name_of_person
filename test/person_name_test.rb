@@ -112,6 +112,11 @@ class PersonNameTest < ActiveSupport::TestCase
     assert_equal 'CM', name.initials
   end
 
+  test "initials single letter" do
+    name = PersonName.full('C')
+    assert_equal 'C', name.initials
+  end
+
   test "from full name" do
     name = PersonName.full('Will St. Clair')
     assert_equal 'Will', name.first
