@@ -2,10 +2,6 @@
 
 Presenting names for English-language applications where a basic model of first and last name(s) combined is sufficient. This approach is not meant to cover all possible naming cases, deal with other languages, or even titulations. Just the basics.
 
-## No further development is going to happen
-
-This gem is essentially frozen, as the developers have decided to only deal with full names going forward in their applications. Feel free to fork this work, brand it under a new name, and continue development.
-
 ## Examples
 
 ```ruby
@@ -53,9 +49,9 @@ require 'active_record'
 require 'active_model'
 ```
 
-## Maintenance Expectations
+## No further development is going to happen
 
-This library is an extraction from Basecamp that's been sufficient in almost unaltered form for over 10 years. While contributions are always welcome, do not expect a lot of feature evolution beyond the basics. Feel free to fork this library if you'd like to add large upgrades like titulations or different accommodations for other languages.
+This gem is essentially frozen, as the developers have decided to only deal with full names going forward in their applications. Feel free to fork this work, brand it under a new name, and continue development.
 
 ## License
 
