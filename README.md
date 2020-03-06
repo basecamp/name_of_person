@@ -2,6 +2,10 @@
 
 Presenting names for English-language applications where a basic model of first and last name(s) combined is sufficient. This approach is not meant to cover all possible naming cases, deal with other languages, or even titulations. Just the basics.
 
+## No further development is going to happen
+
+This gem is essentially frozen, as the developers have decided to only deal with full names going forward in their applications. Feel free to fork this work, brand it under a new name, and continue development.
+
 ## Examples
 
 ```ruby
