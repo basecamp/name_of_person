@@ -10,7 +10,7 @@ module NameOfPerson
 
     # Returns a PersonName object created from the first_name and last_name attributes.
     def name
-      NameOfPerson::PersonName.new(first_name, last_name) if first_name
+      NameOfPerson::PersonName.new(first_name, last_name) if first_name.present?
     end
   end
 end
