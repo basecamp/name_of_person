@@ -49,6 +49,10 @@ require 'active_record'
 require 'active_model'
 ```
 
+## Run tests with
+
+`bundle exec rake test`
+
 ## No further development is going to happen
 
 This gem is essentially frozen, as the developers have decided to only deal with full names going forward in their applications. Feel free to fork this work, brand it under a new name, and continue development.

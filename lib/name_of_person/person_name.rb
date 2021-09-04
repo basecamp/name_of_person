@@ -35,17 +35,17 @@ module NameOfPerson
       @sorted ||= last.present? ? "#{last}, #{first}" : first
     end
 
-    # Returns full name with with trailing 's or ' if name ends in s.
+    # Returns full name with trailing 's or ' if name ends in s.
     def possessive(method = :full)
-      whitelist = %i[full first last abbreviated sorted initials]
+      allowed_method_names = %i[full first last abbreviated sorted initials]
 
-      unless whitelist.include?(method.to_sym)
+      unless allowed_method_names.include?(method.to_sym)
         raise ArgumentError, 'Please provide a valid method'
       end
 
       name = public_send(method)
 
-      @possessive ||= "#{name}'#{'s' unless name.downcase.end_with?('s')}"
+      "#{name}'#{'s' unless name.downcase.end_with?('s')}"
     end
 
     # Returns just the initials.
@@ -53,7 +53,7 @@ module NameOfPerson
       @initials ||= remove(/(\(|\[).*(\)|\])/).scan(/([[:word:]])[[:word:]]*/i).join
     end
 
-    # Returns a mentionable version of the familiar name
+    # Returns a mentionable version of the familiar name.
     def mentionable
       @mentionable ||= familiar.chop.delete(' ').downcase
     end
