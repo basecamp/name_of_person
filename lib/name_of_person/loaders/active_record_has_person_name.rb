@@ -1,3 +1,3 @@
-if defined?(ActiveRecord)
-  ActiveRecord::Base.send :include, NameOfPerson::HasPersonName
+ActiveSupport.on_load(:active_record) do
+  include NameOfPerson::HasPersonName
 end
