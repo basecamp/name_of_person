@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = 'name_of_person'
-  s.version  = '1.1.1'
+  s.version  = '1.1.2'
   s.authors  = 'David Heinemeier Hansson'
   s.email    = 'david@basecamp.com'
   s.summary  = 'Presenting names of people in full, familiar, abbreviated, and initialized forms (but without titulation etc)'
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activesupport', '>= 5.2.0'
 
   s.add_development_dependency 'activemodel', '>= 5.2.0'
-  s.add_development_dependency 'bundler', '~> 1.15'
+  s.add_development_dependency 'bundler'
 
   s.files      = `git ls-files`.split("\n")
   s.test_files = `git ls-files -- test/*`.split("\n")
