@@ -29,7 +29,6 @@ PLATFORMS
 
 DEPENDENCIES
   activemodel (>= 5.2.0)
-  bundler
   byebug
   name_of_person!
   rake

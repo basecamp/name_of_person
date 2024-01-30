@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'activesupport', '>= 5.2.0'
 
   s.add_development_dependency 'activemodel', '>= 5.2.0'
-  s.add_development_dependency 'bundler'
 
   s.files      = `git ls-files`.split("\n")
   s.test_files = `git ls-files -- test/*`.split("\n")
