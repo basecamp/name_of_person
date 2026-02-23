@@ -56,7 +56,7 @@ module NameOfPerson
 
     # Returns a mentionable version of the familiar name
     def mentionable
-      @mentionable ||= familiar.chop.delete(' ').downcase
+      @mentionable ||= familiar.chomp('.').delete(' ').downcase
     end
 
     # Override to_yaml to serialize as a plain string.
